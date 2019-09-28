@@ -5,7 +5,7 @@
 An asynchronous web app that displays random pictures of dogs.  
 The number of dogs displayed is determined by the user.
 
-### Technologies used ###
+### Technology used ###
 
 + HTML
 + CSS
