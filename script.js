@@ -1,17 +1,25 @@
 const numInput = $('#choose-a-number')
 
 function displayResults(responseJson) {
-    console.log(responseJson)
+    $('.dog-pictures').html(' ');
+    $('.dog-pictures').removeClass('hidden');
+    for (let i = 0; i < responseJson.message.length; i ++) {
+        $('.dog-pictures').append('\n\t\t<img src="' + responseJson.message[i] + '">');
+    }
+}
+
+function fetchResponse() {
+    fetch(`https://dog.ceo/api/breeds/image/random/${numInput.val()}`)
+        .then(response => response.json())
+        .then(responseJson =>
+            displayResults(responseJson))
+        .catch(error => alert(error));
 }
 
 function handleSubmitClick() {
-    $('#num-dogs').on('click', function(e) {
-        this.preventDefault;
-        fetch(`https://dog.ceo/api/breeds/image/random/${numInput.val()}`)
-            .then(response => response.json())
-            .then(responseJson =>
-                displayResults(responseJson))
-            .catch(error => alert(error));
+    $('form').on('click submit', function(e) {
+        e.preventDefault();
+        fetchResponse();
     })
 }
 
