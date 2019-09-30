@@ -4,8 +4,15 @@ function displayResults(responseJson) {
     $('.dog-pictures').html(' ');
     $('.dog-pictures').removeClass('hidden');
     $('.full-or-not').removeClass('fullscreen')
-    for (let i = 0; i < responseJson.message.length; i ++) {
-        $('.dog-pictures').append('\n\t\t<img src="' + responseJson.message[i] + '">');
+    $('.not-a-breed').html('')
+    $('.dog-pictures').append('\n\t\t<img src="' + responseJson.message + '">');
+}
+
+function isABreed(responseJson) {
+    if (responseJson.status === "success") {
+        displayResults(responseJson);
+    } else {
+        $('.not-a-breed').html('Could not find pictures of that breed. Please try again')
     }
 }
 
@@ -13,7 +20,7 @@ function fetchResponse() {
     fetch(`https://dog.ceo/api/breed/${breedInput.val()}/images/random`)
         .then(response => response.json())
         .then(responseJson =>
-            displayResults(responseJson))
+            isABreed(responseJson))
         .catch(error => alert(error));
 }
 
