@@ -40,10 +40,6 @@ html, body, .fullscreen {
   height: 100%;
 }
 
-.fullscreen {
-  position: relative;
-}
-
 .under-nav {
   height: 3em;
 }
@@ -63,7 +59,7 @@ section:nth-child(even) {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
