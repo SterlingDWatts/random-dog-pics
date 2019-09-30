@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  min-height: 100%;
 }
 
 *, *::before, *::after {
@@ -14,19 +13,17 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.5;
-  min-height: 100%;
 }
   
 nav, footer {
-  padding: 1%;
+  padding: 1em;
   background-color: #aaa;
 }
   
 nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   z-index: 10;
 }
 
@@ -36,6 +33,19 @@ nav > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+html, body, .fullscreen {
+  height: 100%;
+}
+
+.fullscreen {
+  position: relative;
+}
+
+.under-nav {
+  height: 3em;
 }
   
 header {
@@ -50,6 +60,12 @@ section {
   
 section:nth-child(even) {
   background-color: #ddd;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .hidden {

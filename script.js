@@ -1,8 +1,9 @@
-const numInput = $('#choose-a-number')
+const numInput = $('#choose-a-number');
 
 function displayResults(responseJson) {
     $('.dog-pictures').html(' ');
     $('.dog-pictures').removeClass('hidden');
+    $('.full-or-not').removeClass('fullscreen')
     for (let i = 0; i < responseJson.message.length; i ++) {
         $('.dog-pictures').append('\n\t\t<img src="' + responseJson.message[i] + '">');
     }
@@ -17,7 +18,7 @@ function fetchResponse() {
 }
 
 function handleSubmitClick() {
-    $('form').on('click submit', function(e) {
+    $('form').on('submit', function(e) {
         e.preventDefault();
         fetchResponse();
     })
